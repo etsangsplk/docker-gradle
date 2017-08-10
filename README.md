@@ -21,7 +21,7 @@
 
 Run this from the directory of the Gradle project you want to build.
 
-`docker run --rm -v "$PWD":/project -w /project --name gradle gradle:latest gradle <gradle-task>`
+`docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:latest gradle <gradle-task>`
 
 <!--
 ### Reusing the Gradle cache
@@ -32,7 +32,7 @@ Note that sharing between concurrently running containers doesn't work currently
 
 ```
 docker volume create --name gradle-cache
-docker run -it -v gradle-cache:/home/gradle/.gradle gradle:alpine gradle build
+docker run -it -u gradle -v gradle-cache:/home/gradle/.gradle gradle:alpine gradle build
 ```
 -->
 
